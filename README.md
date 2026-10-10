@@ -15,6 +15,23 @@ npm run check    # build + alle tests
 
 Vereist Node 22.12 of hoger.
 
+## Docker
+
+De site draait ook als container: een multi-stage build (Node bouwt en test, nginx serveert de statische bestanden, zonder root-rechten op poort 8080).
+
+```bash
+docker compose up -d --build   # http://localhost:8080
+```
+
+Of zonder compose:
+
+```bash
+docker build -t simple-portfolio .
+docker run -d -p 8080:8080 simple-portfolio
+```
+
+De image bouwt alleen als `npm run check` (build + tests) slaagt. De nginx-configuratie staat in `docker/nginx.conf`.
+
 ## Gegevens invullen
 
 Persoonlijke gegevens staan in **`src/config.ts`**: naam, e-mailadres, GitHub, LinkedIn, handelsnaam, KvK- en btw-nummer (leeg = niet tonen), de productie-URL (`siteUrl`) en de technologieën.
