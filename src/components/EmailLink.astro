@@ -9,11 +9,12 @@ interface Props {
 
 const { label, class: className } = Astro.props;
 const { user, domain } = splitEmail(profile.email);
+const hasContent = label !== undefined || Astro.slots.has('default');
 ---
 <a
   class={className}
   href="#contact"
   data-email-user={user}
   data-email-domain={domain}
-  data-email-show={label ? undefined : ''}
->{label ?? obfuscateEmail(profile.email)}</a>
+  data-email-show={hasContent ? undefined : ''}
+>{label ?? <slot>{obfuscateEmail(profile.email)}</slot>}</a>

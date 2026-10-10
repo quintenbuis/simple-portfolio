@@ -6,6 +6,7 @@
   --border: #e4e4e7;
   --accent: #2557d6;
   --accent-text: #ffffff;
+  --available: #16a34a;
   --radius: 12px;
   --max-width: 52rem;
   color-scheme: light dark;
@@ -20,6 +21,7 @@
     --border: #2c2e33;
     --accent: #7aa2ff;
     --accent-text: #0b0d12;
+    --available: #4ade80;
   }
 }
 
@@ -111,6 +113,59 @@ ul {
 }
 
 /* Hero */
+.availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  padding: 0.35rem 0.9rem 0.35rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.availability:hover {
+  border-color: var(--available);
+}
+
+.availability-dot {
+  position: relative;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--available);
+}
+
+.availability-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--available);
+  animation: pulse 2s ease-out infinite;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .availability-dot::after {
+    animation: none;
+  }
+}
+
 .hero {
   padding-block: 4rem 3rem;
 }

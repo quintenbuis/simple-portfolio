@@ -47,6 +47,16 @@ describe.each(['nl', 'en'] as const)('dist %s', (lang) => {
     expect(raw).toContain(t.hero.pitch);
   });
 
+  it('toont een beschikbaarheidsbadge die net als de CTA naar mail linkt', () => {
+    const badge = doc.querySelector('.hero a.availability');
+    const cta = doc.querySelector('.hero a.button');
+    expect(badge?.text.trim()).toBe(t.hero.availability);
+    expect(badge?.getAttribute('data-email-user')).toBe(cta?.getAttribute('data-email-user'));
+    expect(badge?.getAttribute('data-email-domain')).toBe(cta?.getAttribute('data-email-domain'));
+    expect(badge?.hasAttribute('data-email-show')).toBe(false);
+    expect(badge?.querySelector('.availability-dot')?.getAttribute('aria-hidden')).toBe('true');
+  });
+
   it('toont alle skills', () => {
     for (const skill of t.about.skills) expect(raw).toContain(skill);
   });

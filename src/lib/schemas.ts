@@ -5,7 +5,7 @@ const text = z.string().trim().min(1);
 export const i18nSchema = z.strictObject({
   meta: z.strictObject({ title: text, description: text }),
   nav: z.strictObject({ switchLabel: text }),
-  hero: z.strictObject({ title: text, pitch: text, cta: text }),
+  hero: z.strictObject({ availability: text, title: text, pitch: text, cta: text }),
   about: z.strictObject({ heading: text, text: text, skills: z.array(text).min(1) }),
   cases: z.strictObject({ heading: text, roleLabel: text, linkLabel: text }),
   contact: z.strictObject({ heading: text, text: text, cta: text }),

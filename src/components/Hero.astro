@@ -11,6 +11,10 @@ interface Props {
 const { t } = Astro.props;
 ---
 <section class="hero container">
+  <EmailLink class="availability">
+    <span class="availability-dot" aria-hidden="true"></span>
+    {t.hero.availability}
+  </EmailLink>
   <h1>{profile.name}</h1>
   <p class="hero-title">{t.hero.title}</p>
   <p class="hero-pitch">{t.hero.pitch}</p>

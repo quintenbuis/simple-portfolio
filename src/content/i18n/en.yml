@@ -4,6 +4,7 @@ meta:
 nav:
   switchLabel: Language
 hero:
+  availability: Available for freelance work
   title: Senior Software Developer
   pitch: I build reliable, maintainable software and help teams solve complex problems simply.
   cta: Get in touch
