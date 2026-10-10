@@ -12,7 +12,7 @@ Uitgevoerd op 2026-10-10 op de lokale build (`dist/`), vóór livegang. Er is no
   - Breid `about.text` in `src/content/i18n/nl.yml` en `en.yml` uit naar 150–300 woorden per taal.
   - Noem daarin jaren ervaring, soorten projecten en sectoren, en je werkwijze: remote of op locatie, en regio.
   - Gebruik de termen "freelance senior software developer" en "freelance PHP/Laravel developer".
-  - Vul `about.skills` aan met 4–6 vaardigheden die geen technologie zijn, zoals API-koppelingen, code reviews en legacy-modernisering.
+  - Noem vaardigheden die geen technologie zijn in de tekst zelf, zoals API-koppelingen, code reviews en legacy-modernisering.
   - Eén of twee (geanonimiseerde) cases voegen veel indexeerbare tekst toe.
 
 ### 2. Titel bevat geen "freelance" en is in beide talen gelijk

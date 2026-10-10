@@ -68,8 +68,8 @@ describe.each(['nl', 'en'] as const)('dist %s', (lang) => {
     }
   });
 
-  it('toont alle skills', () => {
-    for (const skill of t.about.skills) expect(raw).toContain(skill);
+  it('toont geen skill-tags in de over-mij-sectie', () => {
+    expect(doc.querySelector('.about .tags')).toBeNull();
   });
 
   it('toont de cases in volgorde, of geen sectie als er geen zijn', () => {

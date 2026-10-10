@@ -7,7 +7,7 @@ export const i18nSchema = z.strictObject({
   meta: z.strictObject({ title: text, description: text }),
   nav: z.strictObject({ switchLabel: text }),
   hero: z.strictObject({ availability: text, title: text, pitch: text, cta: text }),
-  about: z.strictObject({ heading: text, text: text, techHeading: text, skills: z.array(text).min(1) }),
+  about: z.strictObject({ heading: text, text: text, techHeading: text }),
   cases: z.strictObject({ heading: text, roleLabel: text, linkLabel: text }),
   contact: z.strictObject({ heading: text, text: text, cta: text }),
   footer: z.strictObject({ kvkLabel: text }),

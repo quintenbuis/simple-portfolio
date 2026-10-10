@@ -17,9 +17,6 @@ const technologies = profile.technologies.map((tech) => {
 <section class="about container" aria-labelledby="about-heading">
   <h2 id="about-heading">{t.about.heading}</h2>
   <p>{t.about.text}</p>
-  <ul class="tags">
-    {t.about.skills.map((skill) => <li>{skill}</li>)}
-  </ul>
   <h3 id="tech-heading" class="tech-heading">{t.about.techHeading}</h3>
   <ul class="tech-list" aria-labelledby="tech-heading">
     {technologies.map((tech) => (
