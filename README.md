@@ -23,6 +23,12 @@ De site draait ook als container: een multi-stage build (Node bouwt en test, ngi
 docker compose up -d --build   # http://localhost:8080
 ```
 
+Is poort 8080 al bezet? Kies een andere poort op je machine:
+
+```bash
+PORT=8081 docker compose up -d --build   # http://localhost:8081
+```
+
 Of zonder compose:
 
 ```bash

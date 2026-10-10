@@ -3,5 +3,6 @@ services:
     build: .
     image: simple-portfolio
     ports:
-      - "8080:8080"
+      # Poort op je machine instelbaar: PORT=8081 docker compose up -d
+      - "${PORT:-8080}:8080"
     restart: unless-stopped
