@@ -1,16 +1,28 @@
 ---
+import { profile } from '../config';
 import type { I18nData } from '../lib/schemas';
+import { getTechIcon } from '../lib/tech-icons';
 
 interface Props {
   t: I18nData;
 }
 
 const { t } = Astro.props;
+const technologies = profile.technologies.map((tech) => ({ ...tech, ...getTechIcon(tech.icon) }));
 ---
 <section class="about container" aria-labelledby="about-heading">
   <h2 id="about-heading">{t.about.heading}</h2>
   <p>{t.about.text}</p>
   <ul class="tags">
     {t.about.skills.map((skill) => <li>{skill}</li>)}
+  </ul>
+  <h3 id="tech-heading" class="tech-heading">{t.about.techHeading}</h3>
+  <ul class="tech-list" aria-labelledby="tech-heading">
+    {technologies.map((tech) => (
+      <li style={`--brand: #${tech.hex}`}>
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d={tech.path} fill="currentColor" /></svg>
+        <span>{tech.name}</span>
+      </li>
+    ))}
   </ul>
 </section>

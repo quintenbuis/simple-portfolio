@@ -13,11 +13,8 @@ about:
   text: >-
     Ik heb ruime ervaring met het ontwerpen en bouwen van webapplicaties en koppelingen,
     van architectuur tot oplevering. Ik pak freelance opdrachten op naast mijn vaste werk.
+  techHeading: Technologieën
   skills:
-    - PHP
-    - Laravel
-    - TypeScript
-    - Vue
     - Software-architectuur
 cases:
   heading: Cases

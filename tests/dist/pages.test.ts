@@ -57,6 +57,16 @@ describe.each(['nl', 'en'] as const)('dist %s', (lang) => {
     expect(badge?.querySelector('.availability-dot')?.getAttribute('aria-hidden')).toBe('true');
   });
 
+  it('toont de technologieën met icoon in de volgorde uit de config', () => {
+    expect(doc.querySelector('#tech-heading')?.text).toBe(t.about.techHeading);
+    const items = doc.querySelectorAll('.tech-list li');
+    expect(items.map((li) => li.text.trim())).toEqual(profile.technologies.map((tech) => tech.name));
+    for (const li of items) {
+      expect(li.querySelector('svg')?.getAttribute('aria-hidden')).toBe('true');
+      expect(li.querySelector('svg path')?.getAttribute('d')).toMatch(/^M/);
+    }
+  });
+
   it('toont alle skills', () => {
     for (const skill of t.about.skills) expect(raw).toContain(skill);
   });

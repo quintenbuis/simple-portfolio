@@ -13,11 +13,8 @@ about:
   text: >-
     I have extensive experience designing and building web applications and integrations,
     from architecture to delivery. I take on freelance projects alongside my regular job.
+  techHeading: Technologies
   skills:
-    - PHP
-    - Laravel
-    - TypeScript
-    - Vue
     - Software architecture
 cases:
   heading: Cases
