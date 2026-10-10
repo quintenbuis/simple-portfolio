@@ -18,7 +18,7 @@ about:
     ervaring in het ontwerpen, bouwen en onderhouden van software. Ik werk remote voor
     opdrachtgevers in heel Nederland en ben beschikbaar voor freelance opdrachten.
 
-    Mijn focus ligt op maatwerk webapplicaties en SaaS-platformen, gebouwd met PHP
+    Mijn focus ligt op maatwerk applicaties, gebouwd met PHP
     (Laravel en Symfony), Go en TypeScript (Vue, React en Next.js). Daarnaast realiseer
     ik koppelingen en API's tussen systemen, zoals ERP, CRM en betaal- of logistieke
     partijen, zodat data betrouwbaar en automatisch tussen applicaties stroomt.
@@ -34,10 +34,10 @@ about:
 services:
   heading: Diensten
   items:
-    - title: Webapplicaties & SaaS
+    - title: Maatwerk applicaties
       text: >-
-        Maatwerk webapplicaties en SaaS-platformen, van eerste MVP tot doorontwikkeling
-        van een bestaand product. Gebouwd met Laravel, Symfony, Go en moderne frontends.
+        Applicaties op maat die aansluiten op jouw processen, van eerste versie tot
+        doorontwikkeling van een bestaand systeem. Gebouwd met Laravel, Symfony, Go en moderne frontends.
     - title: Koppelingen & API's
       text: >-
         Betrouwbare integraties tussen systemen zoals ERP, CRM en betaal- of logistieke

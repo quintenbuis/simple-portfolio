@@ -18,7 +18,7 @@ about:
     experience designing, building and maintaining software. I work remotely for clients
     across the Netherlands and I'm available for freelance projects.
 
-    My focus is on custom web applications and SaaS platforms, built with PHP (Laravel
+    My focus is on custom applications, built with PHP (Laravel
     and Symfony), Go and TypeScript (Vue, React and Next.js). I also build integrations
     and APIs between systems such as ERP, CRM, payment and logistics providers, so data
     flows reliably and automatically between applications.
@@ -34,10 +34,10 @@ about:
 services:
   heading: Services
   items:
-    - title: Web applications & SaaS
+    - title: Custom applications
       text: >-
-        Custom web applications and SaaS platforms, from a first MVP to further
-        development of an existing product. Built with Laravel, Symfony, Go and modern frontends.
+        Applications tailored to your processes, from a first version to further
+        development of an existing system. Built with Laravel, Symfony, Go and modern frontends.
     - title: Integrations & APIs
       text: >-
         Reliable integrations between systems such as ERP, CRM, payment and logistics

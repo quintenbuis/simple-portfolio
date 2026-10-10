@@ -19,8 +19,8 @@ Ik ben freelance senior full-stack developer met ruim 6 jaar ervaring in het ont
 
 Waarmee ik je kan helpen:
 
-▸ Webapplicaties & SaaS
-Maatwerk applicaties en SaaS-platformen, van eerste MVP tot doorontwikkeling van een bestaand product.
+▸ Maatwerk applicaties
+Applicaties op maat die aansluiten op jouw processen, van eerste versie tot doorontwikkeling van een bestaand systeem.
 
 ▸ Koppelingen & API's
 Betrouwbare integraties tussen systemen zoals ERP, CRM en betaal- of logistieke partijen, zodat data automatisch en foutloos stroomt.
