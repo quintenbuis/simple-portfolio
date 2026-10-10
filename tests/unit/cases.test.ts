@@ -40,6 +40,14 @@ describe('localizeCases', () => {
     expect(without.link).toBeUndefined();
   });
 
+  it('geeft het logo door', () => {
+    const logo = { src: '/_astro/klant.svg', width: 40, height: 40, format: 'svg' as const };
+    const [withLogo] = localizeCases([{ ...entry('a', 1), data: { ...entry('a', 1).data, logo } }], 'nl');
+    const [without] = localizeCases([entry('b', 1)], 'nl');
+    expect(withLogo.logo).toBe(logo);
+    expect(without.logo).toBeUndefined();
+  });
+
   it('muteert de invoer niet', () => {
     const input = [entry('b', 2), entry('a', 1)];
     localizeCases(input, 'nl');

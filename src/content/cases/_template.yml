@@ -4,10 +4,12 @@
 # order: volgorde op de pagina (laag = eerst)
 # year:  optioneel, getal (2024) of tekst ('2023–2024')
 # link:  optioneel, moet met http:// of https:// beginnen
+# logo:  optioneel, klantlogo (SVG of PNG) naast dit bestand, bijv. ./mijn-case.svg
 # Tip: gebruik `>-` voor langere teksten, dan hoef je niets te escapen.
 order: 99
 # year: 2024
 # link: https://example.com
+# logo: ./mijn-case.svg
 stack:
   - Laravel
   - Vue

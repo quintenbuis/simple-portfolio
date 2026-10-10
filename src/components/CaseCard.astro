@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import type { LocalizedCase } from '../lib/cases';
 import type { I18nData } from '../lib/schemas';
 
@@ -10,10 +11,19 @@ interface Props {
 const { item, t } = Astro.props;
 ---
 <article class="case-card">
-  <h3>{item.title}</h3>
-  <p class="case-meta">
-    {item.client}{item.year && <> · {item.year}</>}
-  </p>
+  <div class="case-header">
+    {item.logo && (
+      <span class="case-logo">
+        <Image src={item.logo} alt="" height={80} />
+      </span>
+    )}
+    <div>
+      <h3>{item.title}</h3>
+      <p class="case-meta">
+        {item.client}{item.year && <> · {item.year}</>}
+      </p>
+    </div>
+  </div>
   <p class="case-role"><span>{t.cases.roleLabel}:</span> {item.role}</p>
   <p>{item.summary}</p>
   <ul class="tags">

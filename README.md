@@ -33,7 +33,8 @@ Beide bestanden moeten **dezelfde sleutels** hebben. Ontbreekt er een sleutel of
 ## Case toevoegen
 
 1. Kopieer `src/content/cases/_template.yml` naar bijv. `src/content/cases/mijn-case.yml` (zonder `_` vooraan).
-2. Vul `order`, `stack` en beide taalblokken (`nl` en `en`) in. `year` en `link` zijn optioneel.
+2. Vul `order`, `stack` en beide taalblokken (`nl` en `en`) in. `year`, `link` en `logo` zijn optioneel.
+   Voor een klantlogo zet je een SVG of PNG naast het case-bestand en verwijs je ernaar met `logo: ./mijn-case.svg`. Bestaat het bestand niet, dan faalt de build.
 3. `npm run check`, committen en pushen.
 
 Cases worden gesorteerd op `order` (laag eerst). Verwijder `voorbeeld-case.yml` vóór livegang. Zonder cases verdwijnt de sectie vanzelf.

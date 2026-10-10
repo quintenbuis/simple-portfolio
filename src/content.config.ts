@@ -1,6 +1,6 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
-import { caseSchema, i18nSchema } from './lib/schemas';
+import { caseCollectionSchema, i18nSchema } from './lib/schemas';
 
 export const collections = {
   i18n: defineCollection({
@@ -9,6 +9,6 @@ export const collections = {
   }),
   cases: defineCollection({
     loader: glob({ pattern: ['**/*.yml', '!**/_*'], base: './src/content/cases' }),
-    schema: caseSchema,
+    schema: ({ image }) => caseCollectionSchema(image),
   }),
 };

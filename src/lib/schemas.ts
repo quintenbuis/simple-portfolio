@@ -1,3 +1,4 @@
+import type { ImageMetadata } from 'astro';
 import { z } from 'astro/zod';
 
 const text = z.string().trim().min(1);
@@ -28,5 +29,10 @@ export const caseSchema = z.strictObject({
   en: caseLocaleSchema,
 });
 
+// In de content config levert Astro image(): die controleert dat het logobestand bestaat.
+export function caseCollectionSchema<T extends z.ZodType>(image: () => T) {
+  return caseSchema.extend({ logo: image().optional() });
+}
+
 export type I18nData = z.infer<typeof i18nSchema>;
-export type CaseData = z.infer<typeof caseSchema>;
+export type CaseData = z.infer<typeof caseSchema> & { logo?: ImageMetadata };

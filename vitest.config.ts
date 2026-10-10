@@ -1,5 +1,6 @@
-import { defineConfig } from 'vitest/config';
+import { getViteConfig } from 'astro/config';
 
-export default defineConfig({
+// getViteConfig laat Vitest .astro-componenten en astro:*-modules begrijpen.
+export default getViteConfig({
   test: { include: ['tests/**/*.test.ts'] },
 });

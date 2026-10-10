@@ -260,6 +260,39 @@ ul {
   padding: 1.5rem;
 }
 
+.case-header {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.case-header .case-meta {
+  margin: 0;
+}
+
+/* Vaste lichte tegel, zodat donkere logo's ook in dark mode zichtbaar blijven. */
+.case-logo {
+  flex: none;
+  display: grid;
+  place-items: center;
+  height: 3rem;
+  min-width: 3rem;
+  max-width: 7rem;
+  padding: 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.case-logo img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .case-card h3 {
   font-size: 1.15rem;
 }

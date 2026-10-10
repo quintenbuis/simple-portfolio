@@ -1,7 +1,8 @@
 import { readFileSync } from 'node:fs';
 import { load } from 'js-yaml';
+import { z } from 'astro/zod';
 import { describe, expect, it } from 'vitest';
-import { caseSchema, i18nSchema } from '../../src/lib/schemas';
+import { caseCollectionSchema, caseSchema, i18nSchema } from '../../src/lib/schemas';
 
 const readYaml = (path: string) => load(readFileSync(path, 'utf8'));
 
@@ -46,6 +47,20 @@ describe('caseSchema', () => {
   it('_template.yml is een geldige case', () => {
     const result = caseSchema.safeParse(readYaml('src/content/cases/_template.yml'));
     expect(result.error).toBeUndefined();
+  });
+});
+
+describe('caseCollectionSchema', () => {
+  // Astro geeft in de content config een image()-helper mee; hier volstaat een string.
+  const schema = caseCollectionSchema(() => z.string());
+
+  it('accepteert een optioneel logo', () => {
+    expect(schema.safeParse(validCase).success).toBe(true);
+    expect(schema.safeParse({ ...validCase, logo: './klant.svg' }).success).toBe(true);
+  });
+
+  it('blijft onbekende velden weigeren', () => {
+    expect(schema.safeParse({ ...validCase, extra: true }).success).toBe(false);
   });
 });
 

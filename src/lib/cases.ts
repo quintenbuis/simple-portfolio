@@ -1,3 +1,4 @@
+import type { ImageMetadata } from 'astro';
 import type { Locale } from './i18n';
 import type { CaseData } from './schemas';
 
@@ -15,6 +16,7 @@ export interface LocalizedCase {
   stack: string[];
   year?: string;
   link?: string;
+  logo?: ImageMetadata;
 }
 
 export function localizeCases(entries: CaseEntry[], lang: Locale): LocalizedCase[] {
@@ -26,5 +28,6 @@ export function localizeCases(entries: CaseEntry[], lang: Locale): LocalizedCase
       stack: data.stack,
       year: data.year === undefined ? undefined : String(data.year),
       link: data.link,
+      logo: data.logo,
     }));
 }
