@@ -2,11 +2,17 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { load } from 'js-yaml';
 import { parse, type HTMLElement } from 'node-html-parser';
 import { beforeAll, describe, expect, it } from 'vitest';
+import astroConfig from '../../astro.config.mjs';
 import { profile } from '../../src/config';
 import { localizeCases, type CaseEntry } from '../../src/lib/cases';
+import { localePath } from '../../src/lib/i18n';
 import type { I18nData } from '../../src/lib/schemas';
 
 const pages = { nl: 'dist/index.html', en: 'dist/en/index.html' } as const;
+// Paden volgen de base uit astro.config.mjs (bijv. '/simple-portfolio' voor een project page).
+const base = astroConfig.base ?? '/';
+const nlPath = localePath('nl', base);
+const enPath = localePath('en', base);
 
 function readDist(path: string): string {
   if (!existsSync(path)) throw new Error(`${path} ontbreekt — draai eerst "npm run build"`);
@@ -74,10 +80,10 @@ describe.each(['nl', 'en'] as const)('dist %s', (lang) => {
   it('heeft canonical en wederzijdse hreflang-links', () => {
     const site = profile.siteUrl.replace(/\/$/, '');
     const href = (sel: string) => doc.querySelector(sel)?.getAttribute('href');
-    expect(href('link[rel="canonical"]')).toBe(lang === 'nl' ? `${site}/` : `${site}/en/`);
-    expect(href('link[rel="alternate"][hreflang="nl"]')).toBe(`${site}/`);
-    expect(href('link[rel="alternate"][hreflang="en"]')).toBe(`${site}/en/`);
-    expect(href('link[rel="alternate"][hreflang="x-default"]')).toBe(`${site}/`);
+    expect(href('link[rel="canonical"]')).toBe(`${site}${lang === 'nl' ? nlPath : enPath}`);
+    expect(href('link[rel="alternate"][hreflang="nl"]')).toBe(`${site}${nlPath}`);
+    expect(href('link[rel="alternate"][hreflang="en"]')).toBe(`${site}${enPath}`);
+    expect(href('link[rel="alternate"][hreflang="x-default"]')).toBe(`${site}${nlPath}`);
   });
 
   it('heeft Open Graph-tags', () => {
@@ -97,9 +103,9 @@ describe.each(['nl', 'en'] as const)('dist %s', (lang) => {
 
   it('heeft een taalwissel die naar beide talen linkt', () => {
     const links = doc.querySelectorAll('.lang-switch a');
-    expect(links.map((a) => a.getAttribute('href'))).toEqual(['/', '/en/']);
+    expect(links.map((a) => a.getAttribute('href'))).toEqual([nlPath, enPath]);
     const current = links.find((a) => a.getAttribute('aria-current') === 'page');
-    expect(current?.getAttribute('href')).toBe(lang === 'nl' ? '/' : '/en/');
+    expect(current?.getAttribute('href')).toBe(lang === 'nl' ? nlPath : enPath);
   });
 
   it('laadt geen externe scripts of stylesheets', () => {

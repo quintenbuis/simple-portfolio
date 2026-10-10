@@ -54,7 +54,10 @@ npm run og
 2. Zet in de repo onder **Settings → Pages → Source** de optie op **GitHub Actions**.
 3. Elke push naar `main` draait build en tests en deployt daarna.
 
-**Eigen domein:** stel het domein in onder **Settings → Pages → Custom domain**, maak bij je DNS-provider een `CNAME` naar `<gebruikersnaam>.github.io` en zet `siteUrl` in `src/config.ts` op dat domein.
+**Eigen domein:** stel het domein in onder **Settings → Pages → Custom domain** en zet `siteUrl` in `src/config.ts` op dat domein. DNS bij je provider:
+
+- **Subdomein** (bijv. `www.jouwnaam.nl`): een `CNAME` naar `<gebruikersnaam>.github.io`.
+- **Hoofddomein** (bijv. `jouwnaam.nl`): `A`-records naar `185.199.108.153`, `185.199.109.153`, `185.199.110.153` en `185.199.111.153` (of een `ALIAS`/`ANAME` naar `<gebruikersnaam>.github.io` als je provider dat ondersteunt). Zie [de GitHub-documentatie](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
 
 **Zonder eigen domein** (project page op `https://<gebruiker>.github.io/<repo>/`): zet `siteUrl` op `https://<gebruiker>.github.io` en voeg in `astro.config.mjs` `base: '/<repo>'` toe.
 
