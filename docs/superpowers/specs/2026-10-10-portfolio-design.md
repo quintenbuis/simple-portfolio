@@ -4,7 +4,7 @@ Datum: 2026-10-10
 
 ## Doel
 
-Een simpele one-page website die dient als digitaal visitekaartje voor een senior software developer die freelance opdrachten zoekt. Bezoekers (potentiële opdrachtgevers die de naam opzoeken) moeten snel zien wie het is, wat hij doet, waar hij aan gewerkt heeft, en contact kunnen opnemen.
+Een simpele one-page website die dient als digitaal visitekaartje voor een senior software developer die freelance opdrachten zoekt. Bezoekers (potentiële opdrachtgevers die de naam opzoeken) moeten snel zien wie het is, wat diegene doet, aan welke projecten gewerkt is, en contact kunnen opnemen.
 
 **Succescriteria**
 
@@ -84,7 +84,7 @@ Alle velden behalve `year` en `link` zijn verplicht, inclusief beide taalblokken
 - Plain CSS in één globaal bestand met CSS-variabelen; geen CSS-framework of UI-library.
 - Geen client-side JavaScript behalve het mailto-script.
 - **SEO:** per taal `<title>`, meta description, Open Graph/Twitter-tags, canonical, `hreflang`, `sitemap.xml` (`@astrojs/sitemap`), JSON-LD `Person` met `sameAs` naar GitHub en LinkedIn.
-- **OG-afbeelding:** één statische SVG→PNG met naam en titel, gegenereerd tijdens de build of meegeleverd in `public/`.
+- **OG-afbeelding:** één statische PNG (1200×630) met naam en titel in `public/og.png`, gemaakt vanuit een meegeleverde SVG-bron (`public/og.svg`); geen generatie tijdens de build.
 - `site` (productie-URL) staat in `astro.config.mjs` / `config.ts`.
 
 ## Hosting en deploy
