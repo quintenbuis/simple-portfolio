@@ -1,0 +1,18 @@
+---
+import type { LocalizedCase } from '../lib/cases';
+import type { I18nData } from '../lib/schemas';
+import CaseCard from './CaseCard.astro';
+
+interface Props {
+  cases: LocalizedCase[];
+  t: I18nData;
+}
+
+const { cases, t } = Astro.props;
+---
+<section id="cases" class="cases container" aria-labelledby="cases-heading">
+  <h2 id="cases-heading">{t.cases.heading}</h2>
+  <div class="case-grid">
+    {cases.map((item) => <CaseCard item={item} t={t} />)}
+  </div>
+</section>

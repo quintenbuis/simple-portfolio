@@ -1,0 +1,57 @@
+---
+import '../styles/global.css';
+import { profile } from '../config';
+import { defaultLocale, localePath, locales, type Locale } from '../lib/i18n';
+import type { I18nData } from '../lib/schemas';
+
+interface Props {
+  lang: Locale;
+  t: I18nData;
+}
+
+const { lang, t } = Astro.props;
+const abs = (path: string) => new URL(path, Astro.site).href;
+const canonical = abs(localePath(lang));
+const ogImage = abs(`${localePath(defaultLocale)}og.png`);
+const ogLocale = { nl: 'nl_NL', en: 'en_US' }[lang];
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  jobTitle: t.hero.title,
+  url: abs(localePath(defaultLocale)),
+  sameAs: [profile.githubUrl, profile.linkedinUrl],
+}).replaceAll('<', '\\u003c');
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t.meta.title}</title>
+    <meta name="description" content={t.meta.description} />
+    <link rel="canonical" href={canonical} />
+    {locales.map((l) => <link rel="alternate" hreflang={l} href={abs(localePath(l))} />)}
+    <link rel="alternate" hreflang="x-default" href={abs(localePath(defaultLocale))} />
+    <link rel="icon" href={`${localePath(defaultLocale)}favicon.svg`} type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={t.meta.title} />
+    <meta property="og:description" content={t.meta.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" set:html={jsonLd} />
+  </head>
+  <body>
+    <slot />
+    <script is:inline>
+      document.querySelectorAll('[data-email-user]').forEach((el) => {
+        const address = el.dataset.emailUser + '@' + el.dataset.emailDomain;
+        el.href = 'mailto:' + address;
+        if (el.hasAttribute('data-email-show')) el.textContent = address;
+      });
+    </script>
+  </body>
+</html>

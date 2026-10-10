@@ -1,0 +1,20 @@
+---
+import type { I18nData } from '../lib/schemas';
+import EmailLink from './EmailLink.astro';
+import SocialLinks from './SocialLinks.astro';
+
+interface Props {
+  t: I18nData;
+}
+
+const { t } = Astro.props;
+---
+<section id="contact" class="contact container" aria-labelledby="contact-heading">
+  <h2 id="contact-heading">{t.contact.heading}</h2>
+  <p>{t.contact.text}</p>
+  <p class="contact-address"><EmailLink /></p>
+  <div class="hero-actions">
+    <EmailLink class="button" label={t.contact.cta} />
+    <SocialLinks />
+  </div>
+</section>

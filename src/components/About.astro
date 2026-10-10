@@ -1,0 +1,16 @@
+---
+import type { I18nData } from '../lib/schemas';
+
+interface Props {
+  t: I18nData;
+}
+
+const { t } = Astro.props;
+---
+<section class="about container" aria-labelledby="about-heading">
+  <h2 id="about-heading">{t.about.heading}</h2>
+  <p>{t.about.text}</p>
+  <ul class="tags">
+    {t.about.skills.map((skill) => <li>{skill}</li>)}
+  </ul>
+</section>

@@ -1,0 +1,21 @@
+---
+import { profile } from '../config';
+import type { I18nData } from '../lib/schemas';
+import EmailLink from './EmailLink.astro';
+import SocialLinks from './SocialLinks.astro';
+
+interface Props {
+  t: I18nData;
+}
+
+const { t } = Astro.props;
+---
+<section class="hero container">
+  <h1>{profile.name}</h1>
+  <p class="hero-title">{t.hero.title}</p>
+  <p class="hero-pitch">{t.hero.pitch}</p>
+  <div class="hero-actions">
+    <EmailLink class="button" label={t.hero.cta} />
+    <SocialLinks />
+  </div>
+</section>

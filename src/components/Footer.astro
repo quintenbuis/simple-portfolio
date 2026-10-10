@@ -1,0 +1,17 @@
+---
+import { profile } from '../config';
+import type { I18nData } from '../lib/schemas';
+
+interface Props {
+  t: I18nData;
+}
+
+const { t } = Astro.props;
+const year = new Date().getFullYear();
+---
+<footer class="site-footer container">
+  <p>
+    © {year} {profile.name}
+    {profile.kvk && <> · {t.footer.kvkLabel} {profile.kvk}</>}
+  </p>
+</footer>

@@ -1,0 +1,23 @@
+---
+import type { LocalizedCase } from '../lib/cases';
+import type { I18nData } from '../lib/schemas';
+
+interface Props {
+  item: LocalizedCase;
+  t: I18nData;
+}
+
+const { item, t } = Astro.props;
+---
+<article class="case-card">
+  <h3>{item.title}</h3>
+  <p class="case-meta">
+    {item.client}{item.year && <> · {item.year}</>}
+  </p>
+  <p class="case-role"><span>{t.cases.roleLabel}:</span> {item.role}</p>
+  <p>{item.summary}</p>
+  <ul class="tags">
+    {item.stack.map((tech) => <li>{tech}</li>)}
+  </ul>
+  {item.link && <a class="case-link" href={item.link} rel="noopener" target="_blank">{t.cases.linkLabel} →</a>}
+</article>

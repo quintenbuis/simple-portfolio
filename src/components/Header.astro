@@ -1,0 +1,26 @@
+---
+import { profile } from '../config';
+import { localePath, locales, type Locale } from '../lib/i18n';
+import type { I18nData } from '../lib/schemas';
+
+interface Props {
+  lang: Locale;
+  t: I18nData;
+}
+
+const { lang, t } = Astro.props;
+---
+<header class="site-header container">
+  <a class="logo" href={localePath(lang)}>{profile.name}</a>
+  <nav aria-label={t.nav.switchLabel}>
+    <ul class="lang-switch">
+      {locales.map((l) => (
+        <li>
+          <a href={localePath(l)} hreflang={l} lang={l} aria-current={l === lang ? 'page' : undefined}>
+            {l.toUpperCase()}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

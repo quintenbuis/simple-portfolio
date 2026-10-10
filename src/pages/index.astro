@@ -1,5 +1,4 @@
 ---
-import { getCollection } from 'astro:content';
-const cases = await getCollection('cases');
+import HomePage from '../components/HomePage.astro';
 ---
-<p>{cases.map((c) => c.id).join(',')}</p>
+<HomePage lang="nl" />
