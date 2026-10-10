@@ -100,7 +100,7 @@ Doorgevoerd op 2026-10-10.
 
 | # | Punt | Status |
 |---|------|--------|
-| 1 | Meer tekst | gedaan: ±150 woorden in 4 alinea's (ervaring, webapps/SaaS, koppelingen, cloud/DevOps, remote NL) |
+| 1 | Meer tekst | gedaan: ±150 woorden in 4 alinea's (ervaring sinds 2020, webapps/SaaS, koppelingen, cloud/DevOps, remote NL) |
 | 2 | Titel | gedaan: full-stack variant met PHP, Go en TypeScript (±67 tekens) |
 | 3 | Meta description | gedaan: ±150 tekens, met naam en stack |
 | 4 | robots.txt | gedaan: gegenereerd (`src/pages/robots.txt.ts`), volgt `site`/`base` |
