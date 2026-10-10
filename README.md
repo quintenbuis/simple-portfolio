@@ -95,19 +95,14 @@ npm run images
 
 ## Deployen
 
-### GitHub Pages (standaard)
+### Google Cloud Run (huidige setup)
 
-1. Push naar GitHub.
-2. Zet in de repo onder **Settings → Pages → Source** de optie op **GitHub Actions**.
-3. Elke push naar `main` draait build en tests en deployt daarna.
+De site draait als container op Cloud Run (service `simple-portfolio-git`, regio `europe-west4`), gebouwd met de `Dockerfile` via Cloud Build vanuit deze GitHub-repo.
 
-**Eigen domein:** stel het domein in onder **Settings → Pages → Custom domain** en zet `siteUrl` in `src/config.ts` op dat domein. DNS bij je provider:
+- Een push naar `main` start de Cloud Build-trigger, die de image bouwt (inclusief `npm run check`) en uitrolt.
+- GitHub Actions (`.github/workflows/ci.yml`) draait daarnaast build en tests op elke push en pull request, maar deployt niets.
+- **Domein:** `quintenbuis.nl` via een Cloud Run domain mapping. DNS staat bij Cloudflare: de A/AAAA-records die Cloud Run opgeeft (`216.239.3x.21` / `2001:4860:4802:3x::15`), met de proxy **uit** (grijze wolk), anders kan Google geen certificaat uitgeven.
 
-- **Subdomein** (bijv. `www.jouwnaam.nl`): een `CNAME` naar `<gebruikersnaam>.github.io`.
-- **Hoofddomein** (bijv. `jouwnaam.nl`): `A`-records naar `185.199.108.153`, `185.199.109.153`, `185.199.110.153` en `185.199.111.153` (of een `ALIAS`/`ANAME` naar `<gebruikersnaam>.github.io` als je provider dat ondersteunt). Zie [de GitHub-documentatie](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
+### Alternatieven
 
-**Zonder eigen domein** (project page op `https://<gebruiker>.github.io/<repo>/`): zet `siteUrl` op `https://<gebruiker>.github.io` en voeg in `astro.config.mjs` `base: '/<repo>'` toe.
-
-### Netlify of Cloudflare Pages
-
-Koppel de repo met build command `npm run build` en output directory `dist`.
+De output is een statische map (`dist/`), dus de site werkt ook op GitHub Pages, Netlify of Cloudflare Pages (build command `npm run build`, output directory `dist`). Draai je onder een subpad (bijv. `https://<gebruiker>.github.io/<repo>/`), voeg dan in `astro.config.mjs` `base: '/<repo>'` toe.
