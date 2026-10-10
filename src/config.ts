@@ -29,8 +29,11 @@ export const profile = {
   email: 'contact@quinnovate.nl',
   githubUrl: 'https://github.com/quintenbuis',
   linkedinUrl: 'https://www.linkedin.com/in/quintenbuis/',
-  // Leeg laten om het KvK-nummer niet te tonen.
+  // Handelsnaam van de eenmanszaak (voor de bedrijfsgegevens in de JSON-LD).
+  businessName: 'Quinnovate',
+  // Leeg laten om het KvK- of btw-nummer niet te tonen.
   kvk: '86084518',
+  vatNumber: 'NL004188539B41',
   // Productie-URL zonder base path, bijv. 'https://jouwnaam.nl'.
   siteUrl: 'https://quintenbuis.nl',
   technologies,

@@ -6,7 +6,7 @@ export default defineConfig({
   site: profile.siteUrl,
   integrations: [
     sitemap({
-      i18n: { defaultLocale: 'nl', locales: { nl: 'nl-NL', en: 'en-US' } },
+      i18n: { defaultLocale: 'nl', locales: { nl: 'nl', en: 'en' } },
     }),
   ],
 });

@@ -13,5 +13,6 @@ const year = new Date().getFullYear();
   <p>
     © {year} {profile.name}
     {profile.kvk && <> · {t.footer.kvkLabel} {profile.kvk}</>}
+    {profile.vatNumber && <> · {t.footer.vatLabel} {profile.vatNumber}</>}
   </p>
 </footer>

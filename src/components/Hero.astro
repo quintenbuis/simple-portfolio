@@ -15,8 +15,10 @@ const { t } = Astro.props;
     <span class="availability-dot" aria-hidden="true"></span>
     {t.hero.availability}
   </EmailLink>
-  <h1>{profile.name}</h1>
-  <p class="hero-title">{t.hero.title}</p>
+  <h1>
+    <span class="hero-name">{profile.name}</span>{' '}
+    <span class="hero-title">{t.hero.title}</span>
+  </h1>
   <p class="hero-pitch">{t.hero.pitch}</p>
   <div class="hero-actions">
     <EmailLink class="button" label={t.hero.cta} />

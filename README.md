@@ -17,9 +17,9 @@ Vereist Node 22.12 of hoger.
 
 ## Gegevens invullen
 
-Persoonlijke gegevens staan in **`src/config.ts`**: naam, e-mailadres, GitHub, LinkedIn, KvK-nummer (leeg = niet tonen) en de productie-URL (`siteUrl`).
+Persoonlijke gegevens staan in **`src/config.ts`**: naam, e-mailadres, GitHub, LinkedIn, handelsnaam, KvK- en btw-nummer (leeg = niet tonen), de productie-URL (`siteUrl`) en de technologieën.
 
-Het e-mailadres staat niet letterlijk in de HTML; het wordt in de browser samengesteld.
+Het e-mailadres staat niet letterlijk in de zichtbare HTML; het wordt in de browser samengesteld. Alleen de gestructureerde data voor zoekmachines (JSON-LD) bevat het adres.
 
 ## Teksten aanpassen
 
@@ -43,12 +43,17 @@ De lijst met technologie-iconen staat in `technologies` in `src/config.ts`. Het 
 
 Cases worden gesorteerd op `order` (laag eerst). Verwijder `voorbeeld-case.yml` vóór livegang. Zonder cases verdwijnt de sectie vanzelf.
 
-## Deelafbeelding (Open Graph)
+## Afbeeldingen (deelafbeelding en iconen)
 
-`public/og.png` wordt gemaakt uit `public/og.svg`. Pas na het wijzigen van je naam ook `og.svg` aan en draai:
+De PNG's in `public/` worden gemaakt uit de SVG-bronnen:
+
+- `og.png` (deelafbeelding, 1200×630) uit `og.svg`
+- `favicon-96.png` en `apple-touch-icon.png` uit `favicon.svg`
+
+Pas na een wijziging in een SVG (of van je naam/rol in `og.svg`) de bron aan en draai:
 
 ```bash
-npm run og
+npm run images
 ```
 
 ## Deployen

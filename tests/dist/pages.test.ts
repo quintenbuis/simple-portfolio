@@ -41,10 +41,19 @@ describe.each(['nl', 'en'] as const)('dist %s', (lang) => {
     expect(doc.querySelector('title')?.text).toBe(t.meta.title);
   });
 
-  it('toont naam, titel en pitch in de hero', () => {
-    expect(doc.querySelector('h1')?.text.trim()).toBe(profile.name);
-    expect(raw).toContain(t.hero.title);
+  it('toont naam en rol samen in de H1, plus de pitch', () => {
+    const h1 = doc.querySelectorAll('h1');
+    expect(h1).toHaveLength(1);
+    expect(h1[0].querySelector('.hero-name')?.text).toBe(profile.name);
+    expect(h1[0].querySelector('.hero-title')?.text).toBe(t.hero.title);
     expect(raw).toContain(t.hero.pitch);
+  });
+
+  it('toont de over-mij-tekst als losse alinea\'s', () => {
+    const expected = t.about.text.split(/\n+/).map((p) => p.replace(/\s+/g, ' ').trim());
+    const paragraphs = doc.querySelectorAll('.about > p').map((p) => p.text.replace(/\s+/g, ' ').trim());
+    expect(paragraphs).toEqual(expected);
+    expect(expected.length).toBeGreaterThan(1);
   });
 
   it('toont een beschikbaarheidsbadge die net als de CTA naar mail linkt', () => {
@@ -94,8 +103,9 @@ describe.each(['nl', 'en'] as const)('dist %s', (lang) => {
   it('heeft mailto-elementen zonder het letterlijke adres in de HTML', () => {
     const links = doc.querySelectorAll('a[data-email-user]');
     expect(links.length).toBeGreaterThanOrEqual(2);
-    expect(raw).not.toContain(profile.email);
-    expect(raw).not.toContain(`mailto:${profile.email}`);
+    // Het adres staat alleen in de JSON-LD voor zoekmachines, niet in de zichtbare HTML.
+    const withoutJsonLd = raw.replace(/<script type="application\/ld\+json">.*?<\/script>/s, '');
+    expect(withoutJsonLd).not.toContain(profile.email);
   });
 
   it('heeft canonical en wederzijdse hreflang-links', () => {
@@ -112,14 +122,48 @@ describe.each(['nl', 'en'] as const)('dist %s', (lang) => {
     expect(og('title')).toBe(t.meta.title);
     expect(og('description')).toBe(t.meta.description);
     expect(og('image')).toMatch(/\/og\.png$/);
+    expect(og('site_name')).toBe(profile.name);
+    expect(og('image:width')).toBe('1200');
+    expect(og('image:height')).toBe('630');
+    expect(og('image:alt')).toBe(`${profile.name} — ${t.hero.title}`);
+    expect(og('locale')).toBe(lang === 'nl' ? 'nl_NL' : 'en_US');
+    expect(og('locale:alternate')).toBe(lang === 'nl' ? 'en_US' : 'nl_NL');
   });
 
-  it('heeft JSON-LD Person met sameAs en zonder e-mail', () => {
+  it('heeft icon-links en een theme-color', () => {
+    const href = (sel: string) => doc.querySelector(sel)?.getAttribute('href') ?? '';
+    expect(href('link[rel="icon"][type="image/png"]')).toBe(`${nlPath}favicon-96.png`);
+    expect(href('link[rel="apple-touch-icon"]')).toBe(`${nlPath}apple-touch-icon.png`);
+    expect(doc.querySelectorAll('meta[name="theme-color"]')).toHaveLength(2);
+  });
+
+  it('heeft JSON-LD met Person, bedrijf en website', () => {
     const json = JSON.parse(doc.querySelector('script[type="application/ld+json"]')!.text);
-    expect(json['@type']).toBe('Person');
-    expect(json.name).toBe(profile.name);
-    expect(json.sameAs).toEqual([profile.githubUrl, profile.linkedinUrl]);
-    expect(json.email).toBeUndefined();
+    const node = (type: string) => json['@graph'].find((n: { '@type': string }) => n['@type'] === type);
+    const person = node('Person');
+    expect(person.name).toBe(profile.name);
+    expect(person.jobTitle).toBe(t.hero.title);
+    expect(person.description).toBe(t.meta.description);
+    expect(person.email).toBe(`mailto:${profile.email}`);
+    expect(person.sameAs).toEqual([profile.githubUrl, profile.linkedinUrl]);
+    expect(person.knowsAbout).toEqual(profile.technologies.map((tech) => tech.name));
+    expect(person.address.addressCountry).toBe('NL');
+
+    const business = node('ProfessionalService');
+    expect(business.name).toBe(profile.businessName);
+    expect(business.identifier).toEqual({ '@type': 'PropertyValue', propertyID: 'KvK', value: profile.kvk });
+    expect(business.founder['@id']).toBe(person['@id']);
+    expect(business.vatID).toBe(profile.vatNumber);
+
+    const website = node('WebSite');
+    expect(website.inLanguage).toBe(lang);
+    expect(website.publisher['@id']).toBe(person['@id']);
+  });
+
+  it('toont KvK- en btw-nummer in de footer', () => {
+    const footer = doc.querySelector('.site-footer')!.text.replace(/\s+/g, ' ');
+    expect(footer).toContain(`${t.footer.kvkLabel} ${profile.kvk}`);
+    expect(footer).toContain(`${t.footer.vatLabel} ${profile.vatNumber}`);
   });
 
   it('heeft een taalwissel die naar beide talen linkt', () => {
@@ -138,8 +182,28 @@ describe.each(['nl', 'en'] as const)('dist %s', (lang) => {
 });
 
 describe('dist algemeen', () => {
-  it('heeft een sitemap', () => {
+  it('heeft een sitemap met dezelfde taalcodes als de pagina\'s', () => {
     expect(existsSync('dist/sitemap-index.xml')).toBe(true);
+    const sitemap = readFileSync('dist/sitemap-0.xml', 'utf8');
+    expect(sitemap).toContain('hreflang="nl"');
+    expect(sitemap).toContain('hreflang="en"');
+    expect(sitemap).not.toMatch(/hreflang="(nl-NL|en-US)"/);
+  });
+
+  it('heeft een robots.txt die naar de sitemap wijst', () => {
+    const robots = readDist('dist/robots.txt');
+    expect(robots).toContain('User-agent: *');
+    const site = profile.siteUrl.replace(/\/$/, '');
+    expect(robots).toContain(`Sitemap: ${site}${nlPath}sitemap-index.xml`);
+  });
+
+  it('heeft PNG-iconen in de juiste formaten', () => {
+    const size = (path: string) => {
+      const png = readFileSync(path);
+      return [png.readUInt32BE(16), png.readUInt32BE(20)];
+    };
+    expect(size('dist/favicon-96.png')).toEqual([96, 96]);
+    expect(size('dist/apple-touch-icon.png')).toEqual([180, 180]);
   });
 
   it('heeft een favicon', () => {

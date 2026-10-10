@@ -1,18 +1,35 @@
 meta:
-  title: Quinten Buis — Senior Software Developer
-  description: Freelance senior software developer. Bekijk mijn werk en neem contact op.
+  title: Quinten Buis — Freelance Full-stack Developer (PHP, Go, TypeScript)
+  description: >-
+    Quinten Buis is freelance senior full-stack developer (PHP, Laravel, Go, TypeScript).
+    Webapplicaties, API-koppelingen en cloud, remote in heel Nederland.
 nav:
   switchLabel: Taal
 hero:
   availability: Beschikbaar voor freelance werk
-  title: Senior Software Developer
+  title: Freelance Senior Full-stack Developer
   pitch: Ik bouw betrouwbare, onderhoudbare software en help teams complexe problemen eenvoudig op te lossen.
   cta: Neem contact op
 about:
   heading: Wat ik doe
+  # Een lege regel begint een nieuwe alinea.
   text: >-
-    Ik heb ruime ervaring met het ontwerpen en bouwen van webapplicaties en koppelingen,
-    van architectuur tot oplevering. Ik pak freelance opdrachten op naast mijn vaste werk.
+    Ik ben Quinten Buis, freelance senior full-stack developer met ruim 5 jaar ervaring
+    in het ontwerpen, bouwen en onderhouden van software. Ik werk remote voor
+    opdrachtgevers in heel Nederland en ben beschikbaar voor freelance opdrachten.
+
+    Mijn focus ligt op maatwerk webapplicaties en SaaS-platformen, gebouwd met PHP
+    (Laravel en Symfony), Go en TypeScript (Vue, React en Next.js). Daarnaast realiseer
+    ik koppelingen en API's tussen systemen, zoals ERP, CRM en betaal- of logistieke
+    partijen, zodat data betrouwbaar en automatisch tussen applicaties stroomt.
+
+    Ook aan de infrastructuurkant voel ik me thuis: ik containeriseer applicaties met
+    Docker, rol ze uit op Kubernetes en beheer omgevingen op Google Cloud (GCP) of een
+    VPS, met Terraform als infrastructure-as-code.
+
+    Ik werk pragmatisch en zorgvuldig: leesbare code, goede tests en heldere
+    communicatie. Heb je een nieuw product, een koppeling die beter kan of een
+    applicatie die naar de cloud moet? Neem gerust contact op.
   techHeading: Technologieën
 cases:
   heading: Cases
@@ -24,3 +41,4 @@ contact:
   cta: Mail me
 footer:
   kvkLabel: KvK
+  vatLabel: Btw

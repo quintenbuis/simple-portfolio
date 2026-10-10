@@ -96,14 +96,21 @@ De sitemap gebruikt `nl-NL`/`en-US` zonder x-default, de HTML gebruikt `nl`/`en`
 
 ## Status
 
+Doorgevoerd op 2026-10-10.
+
 | # | Punt | Status |
 |---|------|--------|
-| 1 | Meer tekst | open, inhoud van Quinten nodig |
-| 2 | Titel | open |
-| 3 | Meta description | open |
-| 4 | robots.txt | open |
-| 5 | JSON-LD | open |
-| 6 | Open Graph | open |
-| 7 | Iconen / theme-color | open |
-| 8 | Taalcodes sitemap | open |
-| 9 | Rol in H1 | open |
+| 1 | Meer tekst | gedaan: ±150 woorden in 4 alinea's (ervaring, webapps/SaaS, koppelingen, cloud/DevOps, remote NL) |
+| 2 | Titel | gedaan: full-stack variant met PHP, Go en TypeScript (±67 tekens) |
+| 3 | Meta description | gedaan: ±150 tekens, met naam en stack |
+| 4 | robots.txt | gedaan: gegenereerd (`src/pages/robots.txt.ts`), volgt `site`/`base` |
+| 5 | JSON-LD | gedaan: `@graph` met Person (incl. e-mail, knowsAbout), ProfessionalService "Quinnovate" (KvK, btw) en WebSite |
+| 6 | Open Graph | gedaan: site_name, image-afmetingen/alt, locale:alternate |
+| 7 | Iconen / theme-color | gedaan: `favicon-96.png`, `apple-touch-icon.png` (`npm run images`), theme-color licht/donker |
+| 8 | Taalcodes sitemap | gedaan: `nl`/`en` |
+| 9 | Rol in H1 | gedaan: "Freelance Senior Full-stack Developer" in de H1 |
+| 10 | Pitch "naast vast werk" | gedaan: neutraal geformuleerd |
+
+**Bewuste keuze:** het e-mailadres staat nu in de JSON-LD (dus letterlijk in de HTML-bron). De zichtbare knoppen blijven versleuteld.
+
+**Nog open:** cases toevoegen (meeste extra content), Google Search Console koppelen na livegang.

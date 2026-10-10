@@ -8,6 +8,8 @@ interface Props {
 }
 
 const { t } = Astro.props;
+// Een lege regel in about.text begint een nieuwe alinea.
+const paragraphs = t.about.text.split(/\n+/);
 const technologies = profile.technologies.map((tech) => {
   if (!tech.icon) return { name: tech.name, ...genericTechIcon, style: undefined, darkBrand: false };
   const { path, hex } = getTechIcon(tech.icon);
@@ -16,7 +18,7 @@ const technologies = profile.technologies.map((tech) => {
 ---
 <section class="about container" aria-labelledby="about-heading">
   <h2 id="about-heading">{t.about.heading}</h2>
-  <p>{t.about.text}</p>
+  {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
   <h3 id="tech-heading" class="tech-heading">{t.about.techHeading}</h3>
   <ul class="tech-list" aria-labelledby="tech-heading">
     {technologies.map((tech) => (

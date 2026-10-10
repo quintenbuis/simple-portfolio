@@ -1,18 +1,35 @@
 meta:
-  title: Quinten Buis — Senior Software Developer
-  description: Freelance senior software developer. See my work and get in touch.
+  title: Quinten Buis — Freelance Full-stack Developer | PHP, Go & TypeScript
+  description: >-
+    Freelance senior full-stack developer Quinten Buis (PHP, Laravel, Go, TypeScript):
+    web apps, API integrations and cloud, remote across the Netherlands.
 nav:
   switchLabel: Language
 hero:
   availability: Available for freelance work
-  title: Senior Software Developer
+  title: Freelance Senior Full-stack Developer
   pitch: I build reliable, maintainable software and help teams solve complex problems simply.
   cta: Get in touch
 about:
   heading: What I do
+  # An empty line starts a new paragraph.
   text: >-
-    I have extensive experience designing and building web applications and integrations,
-    from architecture to delivery. I take on freelance projects alongside my regular job.
+    I'm Quinten Buis, a freelance senior full-stack developer with over 5 years of
+    experience designing, building and maintaining software. I work remotely for clients
+    across the Netherlands and I'm available for freelance projects.
+
+    My focus is on custom web applications and SaaS platforms, built with PHP (Laravel
+    and Symfony), Go and TypeScript (Vue, React and Next.js). I also build integrations
+    and APIs between systems such as ERP, CRM, payment and logistics providers, so data
+    flows reliably and automatically between applications.
+
+    I'm just as comfortable on the infrastructure side: I containerise applications with
+    Docker, deploy them to Kubernetes and manage environments on Google Cloud (GCP) or a
+    VPS, using Terraform as infrastructure as code.
+
+    I work pragmatically and carefully: readable code, solid tests and clear
+    communication. Have a new product, an integration that could be better or an
+    application that needs to move to the cloud? Feel free to get in touch.
   techHeading: Technologies
 cases:
   heading: Cases
@@ -24,3 +41,4 @@ contact:
   cta: Email me
 footer:
   kvkLabel: CoC
+  vatLabel: VAT

@@ -10,7 +10,7 @@ export const i18nSchema = z.strictObject({
   about: z.strictObject({ heading: text, text: text, techHeading: text }),
   cases: z.strictObject({ heading: text, roleLabel: text, linkLabel: text }),
   contact: z.strictObject({ heading: text, text: text, cta: text }),
-  footer: z.strictObject({ kvkLabel: text }),
+  footer: z.strictObject({ kvkLabel: text, vatLabel: text }),
 });
 
 const caseLocaleSchema = z.strictObject({

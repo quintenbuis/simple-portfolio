@@ -171,15 +171,22 @@ ul {
 }
 
 .hero h1 {
+  margin-bottom: 1rem;
+}
+
+.hero-name {
+  display: block;
   font-size: clamp(2.25rem, 6vw, 3.5rem);
   letter-spacing: -0.02em;
 }
 
 .hero-title {
+  display: block;
+  margin-top: 0.5rem;
   color: var(--accent);
   font-weight: 600;
   font-size: 1.25rem;
-  margin: 0 0 1rem;
+  letter-spacing: normal;
 }
 
 .hero-pitch {
