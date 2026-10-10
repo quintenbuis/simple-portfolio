@@ -1,0 +1,27 @@
+---
+import type { I18nData } from '../lib/schemas';
+import type { LocalizedTestimonial } from '../lib/testimonials';
+
+interface Props {
+  items: LocalizedTestimonial[];
+  t: I18nData;
+}
+
+const { items, t } = Astro.props;
+---
+<section id="testimonials" class="testimonials container" aria-labelledby="testimonials-heading">
+  <h2 id="testimonials-heading">{t.testimonials.heading}</h2>
+  <div class="testimonial-grid">
+    {items.map((item) => (
+      <figure class="testimonial">
+        <blockquote>{item.quote}</blockquote>
+        <figcaption>
+          <span class="testimonial-name">
+            {item.link ? <a href={item.link} rel="noopener" target="_blank">{item.name}</a> : item.name}
+          </span>
+          <span class="testimonial-role">{item.company ? `${item.role}, ${item.company}` : item.role}</span>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+</section>

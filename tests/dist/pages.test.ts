@@ -6,6 +6,7 @@ import astroConfig from '../../astro.config.mjs';
 import { profile } from '../../src/config';
 import { localizeCases, type CaseEntry } from '../../src/lib/cases';
 import { localePath } from '../../src/lib/i18n';
+import { localizeTestimonials, type TestimonialEntry } from '../../src/lib/testimonials';
 import type { I18nData } from '../../src/lib/schemas';
 
 const pages = { nl: 'dist/index.html', en: 'dist/en/index.html' } as const;
@@ -24,6 +25,13 @@ const caseEntries: CaseEntry[] = readdirSync('src/content/cases')
   .map((f) => ({
     id: f.replace(/\.yml$/, ''),
     data: load(readFileSync(`src/content/cases/${f}`, 'utf8')) as CaseEntry['data'],
+  }));
+
+const testimonialEntries: TestimonialEntry[] = readdirSync('src/content/testimonials')
+  .filter((f) => f.endsWith('.yml') && !f.startsWith('_'))
+  .map((f) => ({
+    id: f.replace(/\.yml$/, ''),
+    data: load(readFileSync(`src/content/testimonials/${f}`, 'utf8')) as TestimonialEntry['data'],
   }));
 
 describe.each(['nl', 'en'] as const)('dist %s', (lang) => {
@@ -79,6 +87,30 @@ describe.each(['nl', 'en'] as const)('dist %s', (lang) => {
 
   it('toont geen skill-tags in de over-mij-sectie', () => {
     expect(doc.querySelector('.about .tags')).toBeNull();
+  });
+
+  it('toont de diensten uit de vertaalbestanden', () => {
+    expect(doc.querySelector('#services h2')?.text).toBe(t.services.heading);
+    const cards = doc.querySelectorAll('#services .service');
+    expect(cards.map((c) => c.querySelector('h3')?.text.trim())).toEqual(t.services.items.map((s) => s.title));
+    expect(cards.map((c) => c.querySelector('p')?.text.trim())).toEqual(t.services.items.map((s) => s.text));
+  });
+
+  it('toont testimonials in volgorde, of geen sectie als er geen zijn', () => {
+    const expected = localizeTestimonials(testimonialEntries, lang).map((item) => item.quote);
+    if (expected.length === 0) {
+      expect(doc.querySelector('#testimonials')).toBeNull();
+      return;
+    }
+    expect(doc.querySelectorAll('#testimonials blockquote').map((q) => q.text.trim())).toEqual(expected);
+  });
+
+  it('toont de secties in een logische volgorde', () => {
+    const order = ['.hero', '.about', '#services', '#cases', '#testimonials', '#contact']
+      .map((sel) => doc.querySelector(`main ${sel}`))
+      .filter((el) => el !== null)
+      .map((el) => raw.indexOf(el!.outerHTML));
+    expect(order).toEqual([...order].sort((a, b) => a - b));
   });
 
   it('toont de cases in volgorde, of geen sectie als er geen zijn', () => {

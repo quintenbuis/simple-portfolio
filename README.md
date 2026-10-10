@@ -30,6 +30,18 @@ Alle teksten staan in:
 
 Beide bestanden moeten **dezelfde sleutels** hebben. Ontbreekt er een sleutel of zit er een typfout in, dan faalt `npm run build` met een melding welk veld het is.
 
+## Diensten
+
+De diensten staan onder `services.items` in `src/content/i18n/nl.yml` en `en.yml` (titel en tekst per dienst, in beide talen dezelfde volgorde).
+
+## Testimonials
+
+1. Kopieer `src/content/testimonials/_template.yml` naar bijv. `src/content/testimonials/jan-jansen.yml`.
+2. Vul `order`, `name` en beide taalblokken (`role`, `quote`) in. `company` en `link` zijn optioneel.
+3. Vraag altijd toestemming om naam en quote te publiceren.
+
+Zonder testimonials verdwijnt de sectie vanzelf.
+
 ## Technologieën
 
 De lijst met technologie-iconen staat in `technologies` in `src/config.ts`. Het `icon`-veld is de slug van [Simple Icons](https://simpleicons.org) (te vinden in de URL van een icoon, bijv. `vuedotjs`). Bij een onbekende slug faalt de build. Laat `icon` weg voor een generiek server-icoon (bijv. VPS).

@@ -8,7 +8,12 @@ export const i18nSchema = z.strictObject({
   nav: z.strictObject({ switchLabel: text }),
   hero: z.strictObject({ availability: text, title: text, pitch: text, cta: text }),
   about: z.strictObject({ heading: text, text: text, techHeading: text }),
+  services: z.strictObject({
+    heading: text,
+    items: z.array(z.strictObject({ title: text, text: text })).min(1),
+  }),
   cases: z.strictObject({ heading: text, roleLabel: text, linkLabel: text }),
+  testimonials: z.strictObject({ heading: text }),
   contact: z.strictObject({ heading: text, text: text, cta: text }),
   footer: z.strictObject({ kvkLabel: text, vatLabel: text }),
 });
@@ -29,6 +34,20 @@ export const caseSchema = z.strictObject({
   en: caseLocaleSchema,
 });
 
+const testimonialLocaleSchema = z.strictObject({
+  role: text,
+  quote: text,
+});
+
+export const testimonialSchema = z.strictObject({
+  order: z.number().int(),
+  name: text,
+  company: text.optional(),
+  link: z.url({ protocol: /^https?$/ }).optional(),
+  nl: testimonialLocaleSchema,
+  en: testimonialLocaleSchema,
+});
+
 // In de content config levert Astro image(): die controleert dat het logobestand bestaat.
 export function caseCollectionSchema<T extends z.ZodType>(image: () => T) {
   return caseSchema.extend({ logo: image().optional() });
@@ -36,3 +55,4 @@ export function caseCollectionSchema<T extends z.ZodType>(image: () => T) {
 
 export type I18nData = z.infer<typeof i18nSchema>;
 export type CaseData = z.infer<typeof caseSchema> & { logo?: ImageMetadata };
+export type TestimonialData = z.infer<typeof testimonialSchema>;

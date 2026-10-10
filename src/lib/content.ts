@@ -2,6 +2,7 @@ import { getCollection, getEntry } from 'astro:content';
 import { localizeCases, type LocalizedCase } from './cases';
 import type { Locale } from './i18n';
 import type { I18nData } from './schemas';
+import { localizeTestimonials, type LocalizedTestimonial } from './testimonials';
 
 export async function getTranslations(lang: Locale): Promise<I18nData> {
   const entry = await getEntry('i18n', lang);
@@ -11,4 +12,8 @@ export async function getTranslations(lang: Locale): Promise<I18nData> {
 
 export async function getCases(lang: Locale): Promise<LocalizedCase[]> {
   return localizeCases(await getCollection('cases'), lang);
+}
+
+export async function getTestimonials(lang: Locale): Promise<LocalizedTestimonial[]> {
+  return localizeTestimonials(await getCollection('testimonials'), lang);
 }

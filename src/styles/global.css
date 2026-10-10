@@ -373,6 +373,75 @@ ul {
   text-decoration: none;
 }
 
+/* Diensten */
+.service-grid,
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1.25rem;
+}
+
+.service,
+.testimonial {
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.service {
+  border-top: 3px solid var(--accent);
+}
+
+.service h3 {
+  font-size: 1.1rem;
+}
+
+.service p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Testimonials */
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.testimonial blockquote {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.testimonial blockquote::before {
+  content: '“';
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.testimonial blockquote::after {
+  content: '”';
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.testimonial figcaption {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+
+.testimonial-name {
+  font-weight: 600;
+}
+
+.testimonial-role {
+  color: var(--muted);
+}
+
 /* Contact */
 .contact {
   border-top: 1px solid var(--border);

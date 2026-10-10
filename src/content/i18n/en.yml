@@ -31,10 +31,27 @@ about:
     communication. Have a new product, an integration that could be better or an
     application that needs to move to the cloud? Feel free to get in touch.
   techHeading: Technologies
+services:
+  heading: Services
+  items:
+    - title: Web applications & SaaS
+      text: >-
+        Custom web applications and SaaS platforms, from a first MVP to further
+        development of an existing product. Built with Laravel, Symfony, Go and modern frontends.
+    - title: Integrations & APIs
+      text: >-
+        Reliable integrations between systems such as ERP, CRM, payment and logistics
+        providers, and well-documented APIs for your own platform.
+    - title: Cloud & DevOps
+      text: >-
+        Containerising applications, deploying them to Kubernetes or a VPS and
+        capturing infrastructure in Terraform, including CI/CD and monitoring.
 cases:
   heading: Cases
   roleLabel: Role
   linkLabel: View project
+testimonials:
+  heading: What others say
 contact:
   heading: Work together?
   text: Send me an email with a short description of your project and I'll get back to you soon.

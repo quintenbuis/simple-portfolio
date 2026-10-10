@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { getCases, getTranslations } from '../lib/content';
+import { getCases, getTestimonials, getTranslations } from '../lib/content';
 import type { Locale } from '../lib/i18n';
 import About from './About.astro';
 import Cases from './Cases.astro';
@@ -8,6 +8,8 @@ import Contact from './Contact.astro';
 import Footer from './Footer.astro';
 import Header from './Header.astro';
 import Hero from './Hero.astro';
+import Services from './Services.astro';
+import Testimonials from './Testimonials.astro';
 
 interface Props {
   lang: Locale;
@@ -16,13 +18,16 @@ interface Props {
 const { lang } = Astro.props;
 const t = await getTranslations(lang);
 const cases = await getCases(lang);
+const testimonials = await getTestimonials(lang);
 ---
 <Base lang={lang} t={t}>
   <Header lang={lang} t={t} />
   <main>
     <Hero t={t} />
     <About t={t} />
+    <Services t={t} />
     {cases.length > 0 && <Cases cases={cases} t={t} />}
+    {testimonials.length > 0 && <Testimonials items={testimonials} t={t} />}
     <Contact t={t} />
   </main>
   <Footer t={t} />

@@ -1,0 +1,19 @@
+# Kopieer dit bestand naar een nieuwe naam zonder underscore, bijv. jan-jansen.yml.
+# Bestanden die met _ beginnen worden niet getoond. Zonder testimonials verdwijnt de sectie.
+#
+# order:   volgorde op de pagina (laag = eerst)
+# company: optioneel, bedrijf van de persoon
+# link:    optioneel, bijv. LinkedIn-profiel (moet met http:// of https:// beginnen)
+# Vraag altijd toestemming om naam en quote te publiceren.
+order: 99
+name: Voornaam Achternaam
+# company: Bedrijfsnaam
+# link: https://www.linkedin.com/in/profiel/
+nl:
+  role: Functie
+  quote: >-
+    De quote in het Nederlands.
+en:
+  role: Job title
+  quote: >-
+    The quote in English.

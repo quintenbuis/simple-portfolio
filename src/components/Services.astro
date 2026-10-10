@@ -1,0 +1,20 @@
+---
+import type { I18nData } from '../lib/schemas';
+
+interface Props {
+  t: I18nData;
+}
+
+const { t } = Astro.props;
+---
+<section id="services" class="services container" aria-labelledby="services-heading">
+  <h2 id="services-heading">{t.services.heading}</h2>
+  <div class="service-grid">
+    {t.services.items.map((service) => (
+      <article class="service">
+        <h3>{service.title}</h3>
+        <p>{service.text}</p>
+      </article>
+    ))}
+  </div>
+</section>

@@ -31,10 +31,27 @@ about:
     communicatie. Heb je een nieuw product, een koppeling die beter kan of een
     applicatie die naar de cloud moet? Neem gerust contact op.
   techHeading: Technologieën
+services:
+  heading: Diensten
+  items:
+    - title: Webapplicaties & SaaS
+      text: >-
+        Maatwerk webapplicaties en SaaS-platformen, van eerste MVP tot doorontwikkeling
+        van een bestaand product. Gebouwd met Laravel, Symfony, Go en moderne frontends.
+    - title: Koppelingen & API's
+      text: >-
+        Betrouwbare integraties tussen systemen zoals ERP, CRM en betaal- of logistieke
+        partijen, en goed gedocumenteerde API's voor je eigen platform.
+    - title: Cloud & DevOps
+      text: >-
+        Applicaties containeriseren, uitrollen op Kubernetes of een VPS en
+        infrastructuur vastleggen met Terraform, inclusief CI/CD en monitoring.
 cases:
   heading: Cases
   roleLabel: Rol
   linkLabel: Bekijk project
+testimonials:
+  heading: Wat anderen zeggen
 contact:
   heading: Samenwerken?
   text: Stuur me een mail met een korte omschrijving van je project, dan neem ik snel contact met je op.

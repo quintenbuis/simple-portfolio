@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { load } from 'js-yaml';
 import { z } from 'astro/zod';
 import { describe, expect, it } from 'vitest';
-import { caseCollectionSchema, caseSchema, i18nSchema } from '../../src/lib/schemas';
+import { caseCollectionSchema, caseSchema, i18nSchema, testimonialSchema } from '../../src/lib/schemas';
 
 const readYaml = (path: string) => load(readFileSync(path, 'utf8'));
 
@@ -61,6 +61,35 @@ describe('caseCollectionSchema', () => {
 
   it('blijft onbekende velden weigeren', () => {
     expect(schema.safeParse({ ...validCase, extra: true }).success).toBe(false);
+  });
+});
+
+describe('testimonialSchema', () => {
+  const validTestimonial = {
+    order: 1,
+    name: 'Jan Jansen',
+    nl: { role: 'CTO', quote: 'Fijne samenwerking.' },
+    en: { role: 'CTO', quote: 'Great collaboration.' },
+  };
+
+  it('accepteert een minimale testimonial, met optioneel bedrijf en link', () => {
+    expect(testimonialSchema.safeParse(validTestimonial).success).toBe(true);
+    expect(
+      testimonialSchema.safeParse({ ...validTestimonial, company: 'Acme', link: 'https://www.linkedin.com/in/jan/' })
+        .success,
+    ).toBe(true);
+  });
+
+  it('weigert ontbrekende vertaling, onbekende velden en niet-http(s)-links', () => {
+    const { en: _en, ...withoutEn } = validTestimonial;
+    expect(testimonialSchema.safeParse(withoutEn).success).toBe(false);
+    expect(testimonialSchema.safeParse({ ...validTestimonial, extra: 1 }).success).toBe(false);
+    expect(testimonialSchema.safeParse({ ...validTestimonial, link: 'javascript:alert(1)' }).success).toBe(false);
+  });
+
+  it('_template.yml is een geldige testimonial', () => {
+    const result = testimonialSchema.safeParse(readYaml('src/content/testimonials/_template.yml'));
+    expect(result.error).toBeUndefined();
   });
 });
 
