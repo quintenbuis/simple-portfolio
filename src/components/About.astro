@@ -1,14 +1,18 @@
 ---
 import { profile } from '../config';
 import type { I18nData } from '../lib/schemas';
-import { getTechIcon } from '../lib/tech-icons';
+import { genericTechIcon, getTechIcon, isDarkColor } from '../lib/tech-icons';
 
 interface Props {
   t: I18nData;
 }
 
 const { t } = Astro.props;
-const technologies = profile.technologies.map((tech) => ({ ...tech, ...getTechIcon(tech.icon) }));
+const technologies = profile.technologies.map((tech) => {
+  if (!tech.icon) return { name: tech.name, ...genericTechIcon, style: undefined, darkBrand: false };
+  const { path, hex } = getTechIcon(tech.icon);
+  return { name: tech.name, path, fillRule: undefined, style: `--brand: #${hex}`, darkBrand: isDarkColor(hex) };
+});
 ---
 <section class="about container" aria-labelledby="about-heading">
   <h2 id="about-heading">{t.about.heading}</h2>
@@ -19,8 +23,8 @@ const technologies = profile.technologies.map((tech) => ({ ...tech, ...getTechIc
   <h3 id="tech-heading" class="tech-heading">{t.about.techHeading}</h3>
   <ul class="tech-list" aria-labelledby="tech-heading">
     {technologies.map((tech) => (
-      <li style={`--brand: #${tech.hex}`}>
-        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d={tech.path} fill="currentColor" /></svg>
+      <li style={tech.style} data-dark-brand={tech.darkBrand ? '' : undefined}>
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d={tech.path} fill="currentColor" fill-rule={tech.fillRule} /></svg>
         <span>{tech.name}</span>
       </li>
     ))}

@@ -62,6 +62,7 @@ describe.each(['nl', 'en'] as const)('dist %s', (lang) => {
     const items = doc.querySelectorAll('.tech-list li');
     expect(items.map((li) => li.text.trim())).toEqual(profile.technologies.map((tech) => tech.name));
     for (const li of items) {
+      // Ook technologieën zonder merkicoon (bijv. VPS) krijgen een (generiek) icoon.
       expect(li.querySelector('svg')?.getAttribute('aria-hidden')).toBe('true');
       expect(li.querySelector('svg path')?.getAttribute('d')).toMatch(/^M/);
     }

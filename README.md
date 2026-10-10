@@ -32,7 +32,7 @@ Beide bestanden moeten **dezelfde sleutels** hebben. Ontbreekt er een sleutel of
 
 ## Technologieën
 
-De lijst met technologie-iconen staat in `technologies` in `src/config.ts`. Het `icon`-veld is de slug van [Simple Icons](https://simpleicons.org) (te vinden in de URL van een icoon, bijv. `vuedotjs`). Bij een onbekende slug faalt de build.
+De lijst met technologie-iconen staat in `technologies` in `src/config.ts`. Het `icon`-veld is de slug van [Simple Icons](https://simpleicons.org) (te vinden in de URL van een icoon, bijv. `vuedotjs`). Bij een onbekende slug faalt de build. Laat `icon` weg voor een generiek server-icoon (bijv. VPS).
 
 ## Case toevoegen
 

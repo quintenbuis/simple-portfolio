@@ -273,8 +273,16 @@ ul {
 }
 
 .tech-list li:hover {
-  color: var(--brand);
-  border-color: var(--brand);
+  color: var(--brand, var(--accent));
+  border-color: var(--brand, var(--accent));
+}
+
+/* Zwarte merkkleuren zijn onzichtbaar op een donkere achtergrond. */
+@media (prefers-color-scheme: dark) {
+  .tech-list li[data-dark-brand]:hover {
+    color: var(--text);
+    border-color: var(--text);
+  }
 }
 
 .tech-list li:hover span {

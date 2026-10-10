@@ -1,4 +1,29 @@
 // Persoonlijke gegevens — taalonafhankelijk.
+
+export interface Technology {
+  name: string;
+  // Slug van https://simpleicons.org (staat in de URL van het icoon). Weglaten = generiek server-icoon.
+  icon?: string;
+}
+
+const technologies: Technology[] = [
+  { name: 'PHP', icon: 'php' },
+  { name: 'Laravel', icon: 'laravel' },
+  { name: 'Symfony', icon: 'symfony' },
+  { name: 'C# / .NET', icon: 'dotnet' },
+  { name: 'Go', icon: 'go' },
+  { name: 'TypeScript', icon: 'typescript' },
+  { name: 'Vue', icon: 'vuedotjs' },
+  { name: 'React.js', icon: 'react' },
+  { name: 'Next.js', icon: 'nextdotjs' },
+  { name: 'PostgreSQL', icon: 'postgresql' },
+  { name: 'Docker', icon: 'docker' },
+  { name: 'Kubernetes', icon: 'kubernetes' },
+  { name: 'Terraform', icon: 'terraform' },
+  { name: 'GCP', icon: 'googlecloud' },
+  { name: 'VPS' },
+];
+
 export const profile = {
   name: 'Quinten Buis',
   email: 'contact@quinnovate.nl',
@@ -8,13 +33,5 @@ export const profile = {
   kvk: '86084518',
   // Productie-URL zonder base path, bijv. 'https://jouwnaam.nl'.
   siteUrl: 'https://quintenbuis.nl',
-  // Technologieën met icoon. `icon` is de slug van https://simpleicons.org (staat in de URL van het icoon).
-  technologies: [
-    { name: 'PHP', icon: 'php' },
-    { name: 'Laravel', icon: 'laravel' },
-    { name: 'TypeScript', icon: 'typescript' },
-    { name: 'Vue', icon: 'vuedotjs' },
-    { name: 'MySQL', icon: 'mysql' },
-    { name: 'Docker', icon: 'docker' },
-  ],
+  technologies,
 };
