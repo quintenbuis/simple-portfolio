@@ -12,10 +12,10 @@ hero:
   cta: Neem contact op
 about:
   heading: Wat ik doe
-  # Een lege regel begint een nieuwe alinea.
+  # Een lege regel begint een nieuwe alinea. {years} = aantal jaren ervaring (automatisch, zie careerStartYear in src/config.ts).
   text: >-
-    Ik ben Quinten Buis, freelance senior full-stack developer, en ik ontwerp, bouw en
-    onderhoud sinds 2020 software. Ik werk remote voor
+    Ik ben Quinten Buis, freelance senior full-stack developer met ruim {years} jaar
+    ervaring in het ontwerpen, bouwen en onderhouden van software. Ik werk remote voor
     opdrachtgevers in heel Nederland en ben beschikbaar voor freelance opdrachten.
 
     Mijn focus ligt op maatwerk webapplicaties en SaaS-platformen, gebouwd met PHP

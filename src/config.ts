@@ -29,6 +29,8 @@ export const profile = {
   email: 'contact@quinnovate.nl',
   githubUrl: 'https://github.com/quintenbuis',
   linkedinUrl: 'https://www.linkedin.com/in/quintenbuis/',
+  // Startjaar als developer; de site toont automatisch 'ruim X jaar ervaring' via {years} in about.text.
+  careerStartYear: 2020,
   // Handelsnaam van de eenmanszaak (voor de bedrijfsgegevens in de JSON-LD).
   businessName: 'Quinnovate',
   // Leeg laten om het KvK- of btw-nummer niet te tonen.

@@ -51,6 +51,8 @@ Alle teksten staan in:
 - `src/content/i18n/nl.yml`
 - `src/content/i18n/en.yml`
 
+In `about.text` kun je `{years}` gebruiken: dat wordt bij de build vervangen door het aantal jaren sinds `careerStartYear` in `src/config.ts`.
+
 Beide bestanden moeten **dezelfde sleutels** hebben. Ontbreekt er een sleutel of zit er een typfout in, dan faalt `npm run build` met een melding welk veld het is.
 
 ## Diensten

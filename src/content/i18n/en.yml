@@ -12,10 +12,10 @@ hero:
   cta: Get in touch
 about:
   heading: What I do
-  # An empty line starts a new paragraph.
+  # An empty line starts a new paragraph. {years} = years of experience (automatic, see careerStartYear in src/config.ts).
   text: >-
-    I'm Quinten Buis, a freelance senior full-stack developer who has been designing,
-    building and maintaining software since 2020. I work remotely for clients
+    I'm Quinten Buis, a freelance senior full-stack developer with over {years} years of
+    experience designing, building and maintaining software. I work remotely for clients
     across the Netherlands and I'm available for freelance projects.
 
     My focus is on custom web applications and SaaS platforms, built with PHP (Laravel

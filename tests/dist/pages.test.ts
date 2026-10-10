@@ -6,6 +6,7 @@ import astroConfig from '../../astro.config.mjs';
 import { profile } from '../../src/config';
 import { localizeCases, type CaseEntry } from '../../src/lib/cases';
 import { localePath } from '../../src/lib/i18n';
+import { interpolate, yearsSince } from '../../src/lib/text';
 import { localizeTestimonials, type TestimonialEntry } from '../../src/lib/testimonials';
 import type { I18nData } from '../../src/lib/schemas';
 
@@ -58,10 +59,18 @@ describe.each(['nl', 'en'] as const)('dist %s', (lang) => {
   });
 
   it('toont de over-mij-tekst als losse alinea\'s', () => {
-    const expected = t.about.text.split(/\n+/).map((p) => p.replace(/\s+/g, ' ').trim());
+    const text = interpolate(t.about.text, { years: yearsSince(profile.careerStartYear) });
+    const expected = text.split(/\n+/).map((p) => p.replace(/\s+/g, ' ').trim());
     const paragraphs = doc.querySelectorAll('.about > p').map((p) => p.text.replace(/\s+/g, ' ').trim());
     expect(paragraphs).toEqual(expected);
     expect(expected.length).toBeGreaterThan(1);
+  });
+
+  it('toont het automatisch berekende aantal jaren ervaring', () => {
+    const years = yearsSince(profile.careerStartYear);
+    const about = doc.querySelector('.about')!.text;
+    expect(about).toContain(lang === 'nl' ? `ruim ${years} jaar` : `over ${years} years`);
+    expect(raw).not.toContain('{years}');
   });
 
   it('toont een beschikbaarheidsbadge die net als de CTA naar mail linkt', () => {

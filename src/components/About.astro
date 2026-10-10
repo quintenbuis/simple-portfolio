@@ -2,6 +2,7 @@
 import { profile } from '../config';
 import type { I18nData } from '../lib/schemas';
 import { genericTechIcon, getTechIcon, isDarkColor } from '../lib/tech-icons';
+import { interpolate, yearsSince } from '../lib/text';
 
 interface Props {
   t: I18nData;
@@ -9,7 +10,7 @@ interface Props {
 
 const { t } = Astro.props;
 // Een lege regel in about.text begint een nieuwe alinea.
-const paragraphs = t.about.text.split(/\n+/);
+const paragraphs = interpolate(t.about.text, { years: yearsSince(profile.careerStartYear) }).split(/\n+/);
 const technologies = profile.technologies.map((tech) => {
   if (!tech.icon) return { name: tech.name, ...genericTechIcon, style: undefined, darkBrand: false };
   const { path, hex } = getTechIcon(tech.icon);
