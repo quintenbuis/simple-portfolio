@@ -1,0 +1,5 @@
+---
+import { getCollection } from 'astro:content';
+const cases = await getCollection('cases');
+---
+<p>{cases.map((c) => c.id).join(',')}</p>

@@ -1,0 +1,30 @@
+meta:
+  title: Jouw Naam — Senior Software Developer
+  description: Freelance senior software developer. See my work and get in touch.
+nav:
+  switchLabel: Language
+hero:
+  title: Senior Software Developer
+  pitch: I build reliable, maintainable software and help teams solve complex problems simply.
+  cta: Get in touch
+about:
+  heading: What I do
+  text: >-
+    I have extensive experience designing and building web applications and integrations,
+    from architecture to delivery. I take on freelance projects alongside my regular job.
+  skills:
+    - PHP
+    - Laravel
+    - TypeScript
+    - Vue
+    - Software architecture
+cases:
+  heading: Cases
+  roleLabel: Role
+  linkLabel: View project
+contact:
+  heading: Work together?
+  text: Send me an email with a short description of your project and I'll get back to you soon.
+  cta: Email me
+footer:
+  kvkLabel: CoC

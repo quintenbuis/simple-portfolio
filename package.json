@@ -1,0 +1,25 @@
+{
+  "name": "simple-portfolio",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.12.0" },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "vitest run",
+    "test:unit": "vitest run tests/unit",
+    "check": "astro build && vitest run",
+    "og": "node scripts/og.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "3.7.4",
+    "astro": "7.3.8"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "2.6.2",
+    "js-yaml": "5.4.3",
+    "node-html-parser": "9.0.4",
+    "vitest": "5.0.3"
+  }
+}

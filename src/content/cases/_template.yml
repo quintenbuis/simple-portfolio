@@ -1,0 +1,27 @@
+# Kopieer dit bestand naar een nieuwe naam zonder underscore, bijv. mijn-case.yml.
+# Bestanden die met _ beginnen worden niet getoond.
+#
+# order: volgorde op de pagina (laag = eerst)
+# year:  optioneel, getal (2024) of tekst ('2023–2024')
+# link:  optioneel, moet met http:// of https:// beginnen
+# Tip: gebruik `>-` voor langere teksten, dan hoef je niets te escapen.
+order: 99
+# year: 2024
+# link: https://example.com
+stack:
+  - Laravel
+  - Vue
+nl:
+  title: Titel van de case
+  client: Klant of sector
+  role: Jouw rol
+  summary: >-
+    Twee tot drie zinnen: wat was het probleem, wat heb je gedaan
+    en wat was het resultaat?
+en:
+  title: Case title
+  client: Client or sector
+  role: Your role
+  summary: >-
+    Two to three sentences: what was the problem, what did you do
+    and what was the result?

@@ -1,0 +1,30 @@
+meta:
+  title: Jouw Naam — Senior Software Developer
+  description: Freelance senior software developer. Bekijk mijn werk en neem contact op.
+nav:
+  switchLabel: Taal
+hero:
+  title: Senior Software Developer
+  pitch: Ik bouw betrouwbare, onderhoudbare software en help teams complexe problemen eenvoudig op te lossen.
+  cta: Neem contact op
+about:
+  heading: Wat ik doe
+  text: >-
+    Ik heb ruime ervaring met het ontwerpen en bouwen van webapplicaties en koppelingen,
+    van architectuur tot oplevering. Ik pak freelance opdrachten op naast mijn vaste werk.
+  skills:
+    - PHP
+    - Laravel
+    - TypeScript
+    - Vue
+    - Software-architectuur
+cases:
+  heading: Cases
+  roleLabel: Rol
+  linkLabel: Bekijk project
+contact:
+  heading: Samenwerken?
+  text: Stuur me een mail met een korte omschrijving van je project, dan neem ik snel contact met je op.
+  cta: Mail me
+footer:
+  kvkLabel: KvK
