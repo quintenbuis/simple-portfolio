@@ -5,7 +5,7 @@ Afvinkbare stappen op basis van [zichtbaarheid.md](zichtbaarheid.md). Opgesteld 
 ## 0. Voorwerk (eenmalig)
 
 - [ ] Arbeidscontract checken op nevenwerkzaamheden en een relatie- of concurrentiebeding. Meld het freelancewerk eventueel bij je werkgever.
-- [ ] Site live zetten: GitHub-repo, Pages via GitHub Actions, domein `quintenbuis.nl` met A-records (zie README).
+- [x] Site live zetten: Cloud Run met domein `quintenbuis.nl` via Cloudflare-DNS (zie README).
 
 ## 1. Google Search Console (week 1, ±30 min)
 
