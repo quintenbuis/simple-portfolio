@@ -29,6 +29,8 @@ export const profile = {
   email: 'contact@quinnovate.nl',
   githubUrl: 'https://github.com/quintenbuis',
   linkedinUrl: 'https://www.linkedin.com/in/quintenbuis/',
+  // Eigen Plausible-instantie (cookieloos). Leeg laten = geen analytics.
+  analyticsScriptUrl: 'https://plausible.quintenbuis.nl/js/pa-G31pauswa7MJGbbQlt29n.js',
   // Startjaar als developer; de site toont automatisch 'ruim X jaar ervaring' via {years} in about.text.
   careerStartYear: 2020,
   // Handelsnaam van de eenmanszaak (voor de bedrijfsgegevens in de JSON-LD).

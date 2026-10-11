@@ -44,6 +44,10 @@ Persoonlijke gegevens staan in **`src/config.ts`**: naam, e-mailadres, GitHub, L
 
 Het e-mailadres staat niet letterlijk in de zichtbare HTML; het wordt in de browser samengesteld. Alleen de gestructureerde data voor zoekmachines (JSON-LD) bevat het adres.
 
+## Analytics
+
+De site gebruikt een eigen, cookieloze Plausible-instantie. Het script staat in `analyticsScriptUrl` in `src/config.ts`; leeg laten schakelt analytics uit.
+
 ## Teksten aanpassen
 
 Alle teksten staan in:

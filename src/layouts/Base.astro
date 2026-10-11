@@ -86,6 +86,16 @@ const jsonLd = JSON.stringify({
     {locales.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={ogLocales[l]} />)}
     <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json" set:html={jsonLd} />
+    {profile.analyticsScriptUrl && (
+      <>
+        {/* Privacy-friendly analytics by Plausible */}
+        <script is:inline async src={profile.analyticsScriptUrl}></script>
+        <script is:inline>
+          window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+          plausible.init()
+        </script>
+      </>
+    )}
   </head>
   <body>
     <slot />

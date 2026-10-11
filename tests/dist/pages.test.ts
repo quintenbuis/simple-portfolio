@@ -214,11 +214,19 @@ describe.each(['nl', 'en'] as const)('dist %s', (lang) => {
     expect(current?.getAttribute('href')).toBe(lang === 'nl' ? nlPath : enPath);
   });
 
-  it('laadt geen externe scripts of stylesheets', () => {
+  it('laadt geen externe scripts of stylesheets, behalve de eigen analytics', () => {
     for (const el of doc.querySelectorAll('script[src], link[rel="stylesheet"]')) {
       const url = el.getAttribute('src') ?? el.getAttribute('href') ?? '';
+      if (url === profile.analyticsScriptUrl) continue;
       expect(url.startsWith('/')).toBe(true);
     }
+  });
+
+  it('laadt het Plausible-script async en initialiseert het', () => {
+    const script = doc.querySelector(`script[src="${profile.analyticsScriptUrl}"]`);
+    expect(script).not.toBeNull();
+    expect(script!.hasAttribute('async')).toBe(true);
+    expect(raw).toContain('plausible.init()');
   });
 });
 
